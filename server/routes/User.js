@@ -28,17 +28,16 @@ router.post("/login", (req, res) => {
             if (err) {
                 console.log(err)
             }
-            if (results) {
+            if (results.length > 0) {
                 if (password == results[0].password) {
                     console.log("You are logged in!");
+                    res.json({loggedIn: true, username: username});
                 } else {
-                    res.send("Wrong username, password combination");
+                    res.json({loggedIn: false, message: "Wrong username, password combination"});
                 }
             } else {
-                res.send("This user does not exist");
+                res.json({loggedIn: false, message: "This user does not exist"});
             }
-
-        res.send(results);
     }
     );
 });
