@@ -1,0 +1,113 @@
+body {
+  background-color: #FFD7D7;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.loginBox {
+  position: relative;
+  top: 75px;
+  background-color: white;
+  width: 400px;
+  height: 480px;
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  margin: auto;
+  border-radius: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  overflow: hidden;
+  box-shadow: 3px 0px 12px 3px rgba(0,0,0,0.65);
+}
+
+.loginText {
+  color: #4E5166;
+}
+
+.loginText p {
+ margin-top: -20px; 
+}
+
+.inputBox {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
+
+input {
+  height: 45px;
+  border-radius: 10px;
+  width: 380px;
+  margin-top: 5px;
+  padding-left: 15px;
+  border-color: #4E5166;
+}
+
+.btn {
+  width: 100px;
+  padding-right: 10px;
+  display: flex;
+  height: 45px;
+  border-radius: 10px;
+  margin-top: 5px;
+  padding-left: 15px;
+  border-color: #4E5166;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #4E5166;
+  border-bottom: 5px solid;
+}
+
+button:active {
+  border-bottom: var(--border);
+  transform: translateY(5px);
+}
+
+button:hover {
+  background: #FFD7D7;
+}
+
+.createAccount {
+  display: flex;
+  flex-direction: column;
+  padding-top: 25px;
+}
+
+.createAccount span {
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+.createAccount a {
+  padding-top: 15px;
+  font-weight: 700;
+  font-size: 1.2em;
+  color: #FD2D01;
+}
+
+.Upload {
+  position: relative;
+  top: 75px;
+  background-color: white;
+  width: 400px;
+  height: 480px;
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  margin: auto;
+  border-radius: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  overflow: hidden;
+  box-shadow: 3px 0px 12px 3px rgba(0,0,0,0.65);
+}
+
+.textPost {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 5px;
+  resize: none;
+}
