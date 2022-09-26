@@ -8,12 +8,19 @@ function Register() {
     const [password, setPassword] = useState('');
 
     const register = () => {
-        Axios.post("http://localhost:3001/user/register", {
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (username.match(mailformat)){
+            Axios.post("http://localhost:3001/user/register", {
             username: username,
             password: password,
         }).then((response)=> {
             console.log(response);
+            window.alert("Compte crée avec succès!")
         });
+           
+        } else {
+            window.alert("Ceci n'est pas une addresse mail valide!");
+    }
     };
 
     return (
