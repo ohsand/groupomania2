@@ -115,3 +115,9 @@ button:hover {
 input:invalid {
   background-color: pink;
 }
+
+.logout {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}

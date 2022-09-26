@@ -3,7 +3,14 @@ import logo from './icon-left-font-monochrome-white.svg'
 //import React, { useEffect, useState } from 'react'
 
 function Header() {
-    if (localStorage["loggedIn"] === "false") {
+
+    const disconnect = () => {
+        localStorage.clear()
+        window.location.href = "/login";
+    }
+
+
+    if (localStorage["loggedIn"] !== "true") {
         
         return (
             <>
@@ -21,12 +28,12 @@ function Header() {
             return (
                 <>
                 <div className="header">
-                    <img src={logo} alt="Logo" />
+                    <img src={logo} alt="Logo" /> <button className='logout' onClick={disconnect}>Déconnexion</button>
                 </div>
                 <div className="Navbar">
                     <a href="/">Accueil</a>
                     <a href="/post">Créer un post</a>
-                    <a href="/profil">Profil</a>
+                    {/*<a href="/profil">Profil</a>*/}
         
                 </div>
                 </>
