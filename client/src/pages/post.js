@@ -9,6 +9,8 @@ function Post() {
     }
   }, []);
 
+
+
     const [post, setPost] = useState("")
     const [image, setImage] = useState("");
     const username = localStorage.username;
@@ -22,6 +24,8 @@ function Post() {
             console.log(response);
         });
     }
+
+    if (localStorage["loggedIn"] == "true") {
 
     return (
       <div className="Upload">
@@ -40,7 +44,11 @@ function Post() {
                     </form>
             </div>
         </div>
-    )
+    ) } else {
+      return (
+        <p> Vous devez être connecté pour accéder à cette page</p>
+      )
+    }
   };
   
   export default Post 
