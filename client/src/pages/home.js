@@ -10,7 +10,7 @@ function Home() {
   }, []);
 
     return (
-    <div>Page d'accueil 🏡</div>
+    <div>Page d'accueil Groupomania 🏡</div>
     )
   };
   

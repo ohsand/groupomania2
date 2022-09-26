@@ -17,6 +17,7 @@ function Register() {
     };
 
     return (
+        <>
         
         <div className="loginBox">
             <div className='loginText'>
@@ -25,7 +26,7 @@ function Register() {
                     <form className='loginForm'>
                         <div className='inputBox'>
                             <span className='label'>E-mail</span>
-                                <input type="text" placeholder='name@abc.com' className='loginEmail' onChange={(event) => {setUsername(event.target.value);}} />
+                                <input type="text" placeholder='name@abc.com' className='loginEmail' id="email" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}" onChange={(event) => {setUsername(event.target.value);}} />
                         </div>
                         <div className='inputBox'>
                             <span className='label'>Mot de passe</span>
@@ -39,7 +40,21 @@ function Register() {
                     </form>
             </div>
         </div>
+        </>
     )
+    
 }
 
 export default Register
+
+/*document.addEventListener('DOMContentLoaded', function() {
+    if (getElementsByClassName("loginEmail") == invalid) { 
+        document.querySelector('#button').disabled = true
+    } else {
+        document.querySelector('#button').disabled = false
+    }
+}
+document.addEventListener('DOMContentLoaded', function() {
+    let number = 2 + 2
+    console.log(number)
+}*/
