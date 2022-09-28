@@ -53,15 +53,3 @@ function Register() {
 }
 
 export default Register
-
-/*document.addEventListener('DOMContentLoaded', function() {
-    if (getElementsByClassName("loginEmail") == invalid) { 
-        document.querySelector('#button').disabled = true
-    } else {
-        document.querySelector('#button').disabled = false
-    }
-}
-document.addEventListener('DOMContentLoaded', function() {
-    let number = 2 + 2
-    console.log(number)
-}*/

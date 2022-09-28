@@ -10,35 +10,51 @@ function Post() {
   }, []);
 
 
-
-    const [post, setPost] = useState("")
-    const [image, setImage] = useState("");
+    
+    const [name, setName] = useState()
+    const [file, setFile] = useState();
     const username = localStorage.username;
+    /*const upload = () => {
 
-    const upload = () => {
       Axios.post("http://localhost:3001/post/post", {
-            post: post,
-            image: image,
+            name: name,
+            file: file,
             username: username,
         }).then((response)=> {
             console.log(response);
         });
+    }*/
+    const upload = event => {
+      const data = new FormData();
+      data.append("name", name);
+      data.append('file', file);
+      data.append("username", username);
+      
+      Axios.post('http://localhost:3001/post/upload', data)
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
     }
 
-    if (localStorage["loggedIn"] == "true") {
+    if (localStorage["loggedIn"] ===  "true") {
 
     return (
       <div className="Upload">
             <div className='loginText'>
                 <h1>Créer un post</h1>
                 <p>Partagez avec la communauté Groupomania!</p>
-                    <form className='UploadForm'>
+                    <form className='UploadForm' enctype="multipart/form-data">
                         <div className='inputBox'>
-                                <textarea className='textPost' name="text" rows="12" cols="50" onChange={(event) => {setPost(event.target.value);}}></textarea>
+                                <textarea className='textPost' name="text" rows="12" cols="50" onChange={(event) => {
+                                  const { value } = event.target;
+                                  setName(value);
+                                  }}></textarea>
                         </div>
                         <div className='inputBoxFile'>
                             <span className='label'>Joindre une photo</span>
-                                <input type="file" placeholder='*****' className='loginPassword' onChange={(event) => {setImage(event.target.value);}} />
+                                <input type="file" placeholder='*****' className='loginPassword' id="file" onChange={(event) => {
+                                  const file = event.target.files[0];
+                                  setFile(file);
+                                  }} />
                         </div>
                         <button className="btn" type="submit" onClick={upload} >Publier</button>
                     </form>

@@ -3,23 +3,21 @@ const router = express.Router()
 const db = require('../config/db')
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-    cb(null, '../images')
-  },
-  filename: (req, file, cb) => {
-    console.log(file)
-    cb(null, Date.now() + path.extname(file.originalname))
-  }
+var storage = multer.diskStorage({
+    destination: 'images/',
+    filename: function(req, file, callback) {
+      callback(null, Date.now() + file.originalname);
+    }
+  });
 
-});
-const upload = multer({storage: storage});
+var upload = multer({ storage: storage });
 
-router.post("/post", upload.single('image'), (req, res) => {
-
-    const post = req.body.post;
-    const image = req.body.image;
+router.post('/upload', upload.single("file"), function (req, res, file) {
+    console.log(req.file, req.body);
+    const post = req.body.name;
+    const image = req.file.filename;
     const username = req.body.username;
 
     db.query(
@@ -34,7 +32,7 @@ router.post("/post", upload.single('image'), (req, res) => {
 router.get("/feed", (req, res) => {
     db.query(
         "SELECT * FROM socialmedia.post;",
-        (err, results) => {
+        (err, results) => { 
         console.log(err);
         res.send(results);
     }
