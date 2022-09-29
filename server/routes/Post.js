@@ -17,7 +17,7 @@ var upload = multer({ storage: storage });
 router.post('/upload', upload.single("file"), function (req, res, file) {
     console.log(req.file, req.body);
     const post = req.body.name;
-    const image = req.file.filename;
+    const image = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
     const username = req.body.username;
 
     db.query(

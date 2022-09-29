@@ -14,16 +14,7 @@ function Post() {
     const [name, setName] = useState()
     const [file, setFile] = useState();
     const username = localStorage.username;
-    /*const upload = () => {
-
-      Axios.post("http://localhost:3001/post/post", {
-            name: name,
-            file: file,
-            username: username,
-        }).then((response)=> {
-            console.log(response);
-        });
-    }*/
+    
     const upload = event => {
       const data = new FormData();
       data.append("name", name);
