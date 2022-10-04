@@ -29,7 +29,7 @@ router.post('/upload', upload.single("file"), function (req, res, file) {
     );
 });
 
-router.get("/feed", (req, res) => {
+router.get("/", (req, res) => {
     db.query(
         "SELECT * FROM socialmedia.post;",
         (err, results) => { 

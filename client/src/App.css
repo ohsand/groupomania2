@@ -1,6 +1,5 @@
 body {
   background-color: #FFD7D7;
-  overflow: hidden;
   padding: 0;
   margin: 0;
 }
@@ -132,12 +131,13 @@ input:invalid {
 
 .post {
   width: 500px;
-  height: 500px;
-  /* height: fit-content; */
+  /* height: 500px; */
+  height: fit-content;
   background-color: white;
   border: 2px solid #4E5166;
   border-radius: 15px;
   margin: 20px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
 }
@@ -145,4 +145,9 @@ input:invalid {
 .post img {
   height: 50px;
   width: 50px;
+}
+
+.home {
+  height: auto;
+  display: flex;
 }
