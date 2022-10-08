@@ -39,4 +39,19 @@ router.get("/", (req, res) => {
     );
 });
 
+router.post("/like", (req, res) => {
+    const userLiking = req.body.userLiking;
+    const postid = req.body.postid;
+    db.query(
+        "INSERT INTO likes (userLiking, postid) VALUES(?,?)", [userLiking, postid], (err, results) => { 
+        if (err) {
+            console.log(err);
+        }
+        db.query("UPDATE post SET likes = likes + 1 WHERE id = ?", postid, (err2, results2)=> {
+            res.send(results);
+        })
+    }
+    );
+})
+
 module.exports = router;
