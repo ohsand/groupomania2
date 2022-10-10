@@ -16,13 +16,13 @@ function Home() {
   const [uploads, setUploads] = useState([]);
   const [likes, setLikes] = useState([]);
 
-  useEffect(()=> {
+  useEffect(() => {
     if (!localStorage.getItem("loggedIn")) {
       localStorage.setItem("loggedIn", false);
     }
   }, []);
 
-  useEffect(()=> {
+  const getData = () => {
     Axios.get("http://localhost:3001/post").then((response) => {
       setUploads(response.data);
       // response.data.map((val)=> {
@@ -30,38 +30,43 @@ function Home() {
       // });
     });
     console.log(likes);
-  }, []) ; 
+  }
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   const likePost = (id) => {
-    Axios.post("http://localhost:3001/post/like", {userLiking: localStorage.getItem('username'), postid: id}).then((response)=> {
-      console.log("You liked this post");
+    Axios.post("http://localhost:3001/post/like", { userLiking: localStorage.getItem('username'), postid: id }).then((response) => {
+      console.log("You liked this post", response);
+      getData();
     });
   };
 
-    return (
+  return (
     <div className='home'>
-    {uploads.map((val) => {
-      return(
-        <div className='post'>
-        <div className='user'>{val.username}</div>
-        <div className='content'>{val.post}</div>
-        {/* <img src="./16644430197124927082.png" alt='postimage'/> */}
-        {/* <img src={`${SERVER}`} alt="postimage"/> */}
-        {/* <img src={`${req.protocol}://${req.get('host')}/images/16644430197124927082.png`} /> */}
-        <div> <img src={val.image} alt="postphoto"/> </div>
-        <ThumbUpAltIcon 
-        id="likeButton" 
-        onClick={() => { 
-          likePost(val.id);
-          }} 
-          />
-          {val.likes}
-      </div>
-      )
-    })}
+      {uploads.map((val) => {
+        return (
+          <div className='post'>
+            <div className='user'>{val.username}</div>
+            <div className='content'>{val.post}</div>
+            {/* <img src="./16644430197124927082.png" alt='postimage'/> */}
+            {/* <img src={`${SERVER}`} alt="postimage"/> */}
+            {/* <img src={`${req.protocol}://${req.get('host')}/images/16644430197124927082.png`} /> */}
+            <div> <img src={val.image} alt="postphoto" /> </div>
+            <ThumbUpAltIcon
+              id="likeButton"
+              onClick={() => {
+                likePost(val.id);
+              }}
+            />
+            {val.likes}
+          </div>
+        )
+      })}
 
     </div>
-    )
-  };
-  
-  export default Home
+  )
+};
+
+export default Home
