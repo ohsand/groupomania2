@@ -33,8 +33,13 @@ function Home() {
   }
 
   useEffect(() => {
-    getData();
+    if (localStorage.getItem("loggedIn") === "true") {
+    getData(); } else {
+      alert("vous devez être connecté pour afficher ce contenu!");
+      window.location.href = "/login";
+    }
   }, []);
+
 
   const likePost = (id) => {
     Axios.post("http://localhost:3001/post/like", { userLiking: localStorage.getItem('username'), postid: id }).then((response) => {
@@ -42,6 +47,14 @@ function Home() {
       getData();
     });
   };
+
+  const editPost = (id) => {
+    window.location.href = `/edit/${id}`;
+    console.log(id);
+    
+  };
+
+  // const isLoggedIn = localStorage.getItem("loggedIn") == true;
 
   return (
     <div className='home'>
@@ -61,6 +74,10 @@ function Home() {
               }}
             />
             {val.likes}
+            <button onClick={() => {
+                editPost(val.id);
+              }}>modifier ce post</button>
+              {/* <div><img src="./../images/1665482108659ae7dcd7bcb1861f88999f1277775df23.jpg" alt="postphoto" /> </div> */}
           </div>
         )
       })}

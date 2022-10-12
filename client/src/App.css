@@ -133,7 +133,7 @@ input:invalid {
   width: 500px;
   /* height: 500px; */
    background-color: white;
-  border: 2px solid #4E5166;
+  border: 3px solid #4E5166;
   border-radius: 15px;
   margin: 20px;
   padding: 20px;
@@ -167,6 +167,17 @@ input:invalid {
 
 .user {
   font-size: large;
-  padding: 5px;
-  padding-bottom: 15px;
+  font-weight: bold;
+  padding: 10px;
+  margin-bottom: 15px;
+  /* text-decoration: underline; */
+  border: 2px solid #FD2D01;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  font-family:Georgia, 'Times New Roman', Times, serif
 }
