@@ -54,8 +54,6 @@ function Home() {
     
   };
 
-  // const isLoggedIn = localStorage.getItem("loggedIn") == true;
-
   return (
     <div className='home'>
       {uploads.map((val) => {
@@ -84,6 +82,6 @@ function Home() {
 
     </div>
   )
-};
+}; 
 
 export default Home

@@ -36,7 +36,7 @@ router.get("/", (req, res) => {
         "SELECT * FROM socialmedia.post;",
         (err, results) => {
             console.log(err);
-            res.send(results);
+            res.send(results); 
         }
     );
 });
@@ -139,23 +139,24 @@ router.post('/edit', upload.single("file"), function (req, res, file) {
         if (result.length) {
             console.log("you are authorized to edit");
             // is allowed to edit
-            // db.query(
-            //     `DELETE FROM likes WHERE postid = ${postid} AND userLiking = '${userLiking}'`, (err, results) => {
-            //         if (err) {
-            //             console.log('delete row error ===', err);
-            //         }
-            //         console.log('row delete success ===', result);
-            //         db.query("UPDATE post SET likes = likes - 1 WHERE id = ?", postid, (err2, results2) => {
-            //             console.log('post likes row update success ===', results2);
-            //             res.send(results2);
-            //         })
-            //     }
-            // );
+            db.query(
+                `UPDATE post SET post = "${post}", image = "${image}" WHERE id = ?`, postid, (err3, results3) => {
+                console.log('post row update success ===', results3);
+                res.send(results3);
+            })
         } else {
             allowEditAdmin(postid, username).then(result => {
                 console.log('row check ===', result);
                 if (result.length) {
                     console.log("you are authorized to edit");
+                    console.log(`"${post}"`);
+                    console.log(`"${image}"`);
+                    console.log(postid);
+                    db.query(
+                        `UPDATE post SET post = "${post}", image = "${image}" WHERE id = ?`, postid, (err4, results4) => {
+                        console.log('admin post row update success ===', results4);
+                        res.send(results4);
+                    })
                 } else {
                     console.log("you are not authorized to edit");
                 }
