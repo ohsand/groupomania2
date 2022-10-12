@@ -184,6 +184,7 @@ input:invalid {
 }
 
 @media only screen and (max-width: 600px) {
+
   .loginBox {
     max-width: 80%;
     margin-bottom: 120px;
@@ -199,4 +200,23 @@ input:invalid {
     width: 100%;
     margin-bottom: 20px;
   }
+
+  #uploadForm {
+    max-width: 90%;
+    height: 440px;
+    padding: 10px;
+    margin: 10px;
+    margin-top: -40px;
+  }
+
+  #uploadForm textarea {
+    max-width: 85%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .UploadForm {
+    max-width: 100%;
+}
+
 }

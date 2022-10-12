@@ -2,6 +2,15 @@ import React, { useEffect, useState } from 'react';
 import '../App.css'
 import Axios from 'axios';
 
+var input = document.getElementById("uploadForm");
+if (input){
+input.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("aupload").click();
+  }
+})};
+
 function Post() {
   useEffect(()=> {
     if (!localStorage.getItem("loggedIn")) {
@@ -29,7 +38,7 @@ function Post() {
     if (localStorage["loggedIn"] ===  "true") {
 
     return (
-      <div className="Upload">
+      <div className="Upload" id='uploadForm'>
             <div className='loginText'>
                 <h1>Créer un post</h1>
                 <p>Partagez avec la communauté Groupomania!</p>
@@ -47,7 +56,7 @@ function Post() {
                                   setFile(file);
                                   }} />
                         </div>
-                        <button className="btn" type="submit" onClick={upload} >Publier</button>
+                        <button className="btn" type="submit" id="upload" onClick={upload} >Publier</button>
                     </form>
             </div>
         </div>
