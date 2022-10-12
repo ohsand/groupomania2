@@ -131,6 +131,7 @@ input:invalid {
 
 .post {
   width: 500px;
+  max-width: 80%;
   /* height: 500px; */
    background-color: white;
   border: 3px solid #4E5166;
@@ -180,4 +181,22 @@ input:invalid {
 
 .content {
   font-family:Georgia, 'Times New Roman', Times, serif
+}
+
+@media only screen and (max-width: 600px) {
+  .loginBox {
+    max-width: 80%;
+    margin-bottom: 120px;
+    margin-top: -40px;
+    height: 440px;
+  }
+
+  .inputBox input {
+    width: 97%;
+  }
+
+  .inputBoxRegister input {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 }

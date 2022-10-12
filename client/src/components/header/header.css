@@ -37,3 +37,14 @@ img {
 .Navbar a:hover {
     background-color: white;
 }
+
+@media only screen and (max-width: 600px) {
+img {
+    height: 75%;
+    width: 75%;
+}
+
+.Navbar {
+    flex-direction: column;
+}
+}

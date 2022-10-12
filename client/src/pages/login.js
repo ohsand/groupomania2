@@ -2,6 +2,15 @@ import '../App.css'
 import React, { useState } from 'react';
 import Axios from "axios";
 
+var input = document.getElementById("loginBox");
+if (input){
+input.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("login").click();
+  }
+})};
+
 function Login() {
 
     const [username, setUsername] = useState('');
@@ -38,7 +47,7 @@ function Login() {
                             <span className='label'>Mot de passe</span>
                                 <input type="password" placeholder='*****' className='loginPassword' onChange={(event) => {setPassword(event.target.value);}} />
                         </div>
-                        <button className="btn" type="submit" onClick={login} >Connexion</button>
+                        <button className="btn" type="submit" id="login" onClick={login} >Connexion</button>
                         <div className='createAccount'>
                             <span>Vous n'avez pas encore de compte?</span>
                             <a href="/register">Créer un compte</a>

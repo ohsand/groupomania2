@@ -33,7 +33,7 @@ router.post('/upload', upload.single("file"), function (req, res, file) {
 
 router.get("/", (req, res) => {
     db.query(
-        "SELECT * FROM socialmedia.post;",
+        "SELECT * FROM socialmedia.post ORDER BY id DESC;",
         (err, results) => {
             console.log(err);
             res.send(results); 
