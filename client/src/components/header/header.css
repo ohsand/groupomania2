@@ -38,6 +38,14 @@ img {
     background-color: white;
 }
 
+.icon {
+    position: relative;
+    height: 30px;
+    width: 30px;
+    top: 7px;
+    margin-right: 10px;
+}
+
 @media only screen and (max-width: 600px) {
 img {
     height: 75%;

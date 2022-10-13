@@ -1,6 +1,8 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 // import { useAsyncValue } from 'react-router-dom';
 import '../App.css';
 import { AutoFixHighSharp } from '@mui/icons-material';
@@ -55,11 +57,11 @@ function Home() {
   };
 
   return (
-    <div className='home'>
+    <><div className='home'>
       {uploads.map((val) => {
         return (
           <div className='post'>
-            <div className='user'>{val.username}</div>
+            <div className='user'><AccountCircleIcon class="userIcon"/>{val.username}</div>
             <div className='content'>{val.post}</div>
             {/* <img src="./16644430197124927082.png" alt='postimage'/> */}
             {/* <img src={`${SERVER}`} alt="postimage"/> */}
@@ -81,6 +83,8 @@ function Home() {
       })}
 
     </div>
+    <a href="#top" id="topArrowContainer"><ArrowCircleUpIcon id="topArrow"/></a>
+    </>
   )
 }; 
 

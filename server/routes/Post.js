@@ -7,7 +7,7 @@ const fs = require('fs');
 const { resolve } = require('path');
 
 var storage = multer.diskStorage({
-    destination: 'client/src/images/',
+    destination: 'images/',
     filename: function (req, file, callback) {
         callback(null, Date.now() + file.originalname);
     }
